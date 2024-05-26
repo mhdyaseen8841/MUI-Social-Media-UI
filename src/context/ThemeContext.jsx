@@ -5,9 +5,9 @@ const ThemeContext = createContext()
 
 export const ThemeContextProvider =({children}) =>{
     const [mode, setMode] = useState("light");
-  
+    const [openDrawer, setOpenDrawer] = useState(false);
     return (
-      <ThemeContext.Provider value={{mode,setMode}}>
+      <ThemeContext.Provider value={{mode,setMode,openDrawer,setOpenDrawer}}>
         {children}
       </ThemeContext.Provider>
     );

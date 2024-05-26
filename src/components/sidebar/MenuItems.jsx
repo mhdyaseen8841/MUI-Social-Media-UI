@@ -52,7 +52,7 @@ const MenuItems = () => {
               }  
               </ListItemIcon>
 
-              <Switch onChange={e=>setMode(mode=== "light" ? "dark" : "light")} sx={switchStyles}  label='Dark mode'  />
+              <Switch  checked={mode === "dark"} onChange={e=>setMode(mode=== "light" ? "dark" : "light")} sx={switchStyles}  label='Dark mode'  />
             </ListItemButton>
           </ListItem>
 

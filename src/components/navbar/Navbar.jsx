@@ -11,10 +11,11 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
-import PetsIcon from "@mui/icons-material/Pets";
+import InterestsIcon from "@mui/icons-material/Interests";
 import Mail from '@mui/icons-material/Mail';
 import Notfications from '@mui/icons-material/Notifications';
-
+import { useThemeContext } from '../../context/ThemeContext';
+import MenuIcon from '@mui/icons-material/Menu';
 const StyledToolsbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
@@ -43,7 +44,7 @@ const UserBox = styled(Box)(({ theme }) => ({
    }
 }))
 const Navbar = () => {
-
+  const { setOpenDrawer } = useThemeContext();
   const [open,setOpen] = React.useState(false)
   return (
     <AppBar position="sticky">
@@ -52,7 +53,11 @@ const Navbar = () => {
         <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
           SOCIALGRAM
         </Typography>
-        <PetsIcon sx={{ display: { xs: "block", sm: "none" } }} />
+        <InterestsIcon sx={{ display: { xs: "block", sm: "none" } }} />
+        <MenuIcon onClick={()=>{
+          console.log("Press")
+          setOpenDrawer(true)
+          }} sx={{ display: { xs: "block", sm: "none" } }} />
         
         <Search   >
         
