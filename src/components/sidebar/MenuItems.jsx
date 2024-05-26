@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { styled,  ListItem, ListItemButton,Switch, ListItemIcon, ListItemText, Typography } from '@mui/material'
-import { Home, Storefront, Person,ModeNight, AccountBox, Group, Description } from '@mui/icons-material';
+import { Home, Storefront, Person,ModeNight, AccountBox, Group, Description, Mode, DarkMode } from '@mui/icons-material';
+import { useThemeContext } from '../../context/ThemeContext';
+
 
 const menuItems = [
   { icon: <Home />, text: 'Home', href: '#home' },
@@ -18,8 +20,19 @@ const StyledListItemText = styled(ListItemText)({
       fontWeight: '500',
     },
   });
+
+  const switchStyles = {
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: 'yellow', // Dark theme track color
+    },
+    '& .MuiSwitch-switchBase.Mui-checked .MuiSwitch-thumb': {
+      backgroundColor: 'white', // Dark theme thumb color
+    },
+  };
   
 const MenuItems = () => {
+  const { mode,setMode } = useThemeContext();
+
   return (
     <>
       {menuItems.map((item, index) => (
@@ -34,10 +47,12 @@ const MenuItems = () => {
 <ListItem disablePadding>
             <ListItemButton component="a" href="#profile">
               <ListItemIcon>
-                <ModeNight />
+              {
+                mode ==="light" ?<ModeNight/> :<DarkMode style={{color:"yellow"}}/>
+              }  
               </ListItemIcon>
 
-              <Switch label='Dark mode' defaultChecked />
+              <Switch onChange={e=>setMode(mode=== "light" ? "dark" : "light")} sx={switchStyles}  label='Dark mode'  />
             </ListItemButton>
           </ListItem>
 

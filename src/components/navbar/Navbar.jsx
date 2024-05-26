@@ -22,6 +22,7 @@ const StyledToolsbar = styled(Toolbar)({
 
 const Search = styled("div")(({ theme }) => ({
   backgroundColor: "white",
+  color:"black"  ,
   padding: "0 10px",
   borderRadius: theme.shape.borderRadius,
   width: "40%",
@@ -53,9 +54,13 @@ const Navbar = () => {
         </Typography>
         <PetsIcon sx={{ display: { xs: "block", sm: "none" } }} />
         
-        <Search>
-          {" "}
-          <InputBase placeholder="search user"></InputBase>{" "}
+        <Search   >
+        
+          <InputBase  style={{
+    '&::placeholder': {
+      color: '#333', // Adjust this for your desired dark color
+    },
+  }} placeholder="search user"></InputBase>
         </Search>
         <IconContainer>
           <Badge badgeContent={4} color="error">
